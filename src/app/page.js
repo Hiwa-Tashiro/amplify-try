@@ -1,7 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import React,{useEffect} from "react";
 
 export default function Home() {
+     useEffect(async () => {
+     try {
+       const url = "https://223rii0bs3.execute-api.ap-northeast-1.amazonaws.com/default/amplify-try";
+       const response = await fetch(url)
+         .then((res) => { return res.json() }) // JSON形式に変換
+       console.log(response)
+
+     } catch (error) {
+       console.error("Error fetching data:", error);
+     }
+   }, []);
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
